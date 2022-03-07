@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "98129829039",
+    "project_id": "fehm-97052",
+    "storage_bucket": "fehm-97052.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98129829039:android:37235d422ef5e9ba51485a",
+        "android_client_info": {
+          "package_name": "com.spidev.fehm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98129829039-3u46o9f21oksg18jkah9tmgrmrst5gto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUq2P5MgMIYtOsI6roWbqgYl_DtCMRjIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98129829039-3u46o9f21oksg18jkah9tmgrmrst5gto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
