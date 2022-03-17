@@ -1,10 +1,9 @@
 import 'package:fehm/api/auth.dart';
-import 'package:fehm/bloc/auth.dart';
+import 'package:fehm/blocs/auth_bloc/auth_bloc.dart';
 import 'package:fehm/config/navigation.dart';
 import 'package:fehm/config/theme.dart';
 import 'package:fehm/model/api.dart';
 import 'package:fehm/model/app.dart';
-import 'package:fehm/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +20,7 @@ class AppDrawer extends StatelessWidget {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove("auth_user");
     prefs.remove("auth_token");
-    BlocProvider.of<AuthBloc>(context).add(SetAuthUser(User()));
+    BlocProvider.of<AuthBloc>(context).add(RemoveAuthUser());
   }
 
   AppDrawer({Key? key}) : super(key: key) {
@@ -77,22 +76,26 @@ class AppDrawer extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<AuthBloc, AuthBlocState>(builder: (context, state) {
-                  return Text(
-                      '${state.user?.firstName} ${state.user?.lastName}',
-                      style: GoogleFonts.averageSans(
-                        fontSize: 24,
-                        color: AppTheme.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ));
+                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                  if (state is AuthLoggedIn) {
+                    return Text(
+                        '${state.user.firstName} ${state.user.lastName}',
+                        style: GoogleFonts.averageSans(
+                          fontSize: 24,
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ));
+                  } else {
+                    return const Text("Log in");
+                  }
                 }),
-                Text("View Profile"),
+                const Text("View Profile"),
               ],
             )
           ],
         ),
-        Divider(color: Colors.black),
-        ...this.getDrawerMenu(context),
+        const Divider(color: Colors.black),
+        ...getDrawerMenu(context),
       ],
     )));
   }

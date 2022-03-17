@@ -1,6 +1,5 @@
 import 'package:fehm/config/navigation.dart';
 import 'package:fehm/model/api.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fehm/widgets/text_input.dart';
@@ -10,9 +9,11 @@ class RegisterScreen extends StatelessWidget {
   final TextEditingController usernameControl = TextEditingController();
   final TextEditingController passwordControl = TextEditingController();
 
+  RegisterScreen({Key? key}) : super(key: key);
+
   void login(BuildContext context) {
     // final auth = Provider.of<Auth>(context, listen: false);
-    var params = APIParams(data: {});
+    APIParams(data: {});
     // Navigator.pushNamed(context, '/');
   }
 

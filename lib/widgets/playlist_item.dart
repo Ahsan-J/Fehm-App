@@ -1,11 +1,10 @@
 import 'package:fehm/config/navigation.dart';
-import 'package:fehm/model/audio_specs.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:fehm/model/audio.dart';
 import 'package:flutter/material.dart';
 
 class PlayListItem extends StatelessWidget {
   Function? onPlay;
-  AudioSpecs? audioItem;
+  Audio? audioItem;
 
   PlayListItem({Key? key, this.onPlay, this.audioItem}) : super(key: key);
 

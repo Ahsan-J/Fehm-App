@@ -1,4 +1,4 @@
-import 'package:fehm/bloc/auth.dart';
+import 'package:fehm/blocs/auth_bloc/auth_bloc.dart';
 import 'package:fehm/config/navigation.dart';
 import 'package:fehm/screens/about.dart';
 import 'package:fehm/screens/auth/login.dart';

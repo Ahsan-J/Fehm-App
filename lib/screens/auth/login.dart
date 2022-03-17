@@ -1,12 +1,11 @@
 import 'package:fehm/api/auth.dart';
-import 'package:fehm/bloc/auth.dart';
+import 'package:fehm/blocs/auth_bloc/auth_bloc.dart';
 import 'package:fehm/config/navigation.dart';
 import 'package:fehm/model/api.dart';
 import 'package:fehm/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fehm/widgets/app_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
@@ -24,7 +23,9 @@ class Login extends StatelessWidget {
 
     try {
       var response = await login(params);
-      context.read<AuthBloc>().add(SetAuthUser(User.fromJson(response.data)));
+      context
+          .read<AuthBloc>()
+          .add(SetAuthUser(user: User.fromJson(response.data)));
       AppRouter.push('/');
     } catch (e) {
       print(e);

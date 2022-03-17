@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:fehm/bloc/auth.dart';
+import 'package:fehm/blocs/auth_bloc/auth_bloc.dart';
 import 'package:fehm/config/navigation.dart';
-import 'package:fehm/model/audio_specs.dart';
+import 'package:fehm/model/audio.dart';
 import 'package:fehm/model/user.dart';
 import 'package:fehm/widgets/audio_control.dart';
 import 'package:fehm/widgets/layout.dart';
@@ -23,7 +23,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String? activeUrl;
 
-  void onItemPress(AudioSpecs item) {
+  void onItemPress(Audio item) {
     setState(() {
       activeUrl = item.url;
     });
@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
     if (user.id == null) {
       AppRouter.replace("/login");
     } else {
-      BlocProvider.of<AuthBloc>(context).add(SetAuthUser(user));
+      BlocProvider.of<AuthBloc>(context).add(SetAuthUser(user: user));
     }
   }
 
@@ -56,8 +56,8 @@ class _HomeState extends State<Home> {
             children: [
               Expanded(
                   child: Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 3.0),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 3.0),
                       child: TextInput(
                           placeholder: "Search", icon: Icons.search))),
               IconButton(icon: const Icon(Icons.menu), onPressed: () {})
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
               children: [
                 PlayListItem(
                     onPlay: onItemPress,
-                    audioItem: AudioSpecs(
+                    audioItem: Audio(
                         url:
                             '${dotenv.env["BASE_URL"]}/audio/stream/74f9e4b329111020c2177110c92d922e2f.mp3')),
               ],

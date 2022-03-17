@@ -1,47 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:fehm/model/genre.dart';
 import 'package:fehm/widgets/playlist_item.dart';
 
-enum UserRole {
-  SuperAdmin,
-  Admin,
-  User,
-  Narrator,
-}
-
-extension UserRoleExt on UserRole {
-  get role {
-    switch (this) {
-      case UserRole.SuperAdmin:
-        return 1;
-      case UserRole.Admin:
-        return 2;
-      case UserRole.Narrator:
-        return 8;
-      default:
-        return 4;
-    }
-  }
-}
-
-enum MemberShip {
-  Standard,
-  Prime,
-}
-
-extension MemberShipExt on MemberShip {
-  get role {
-    switch (this) {
-      case MemberShip.Standard:
-        return 1;
-      case MemberShip.Prime:
-        return 2;
-      default:
-        return 4;
-    }
-  }
-}
-
-class User {
+class User extends Equatable {
   String? id;
   String? firstName;
   String? lastName;
@@ -104,5 +65,49 @@ class User {
       "genre": genre,
       "profile_url": profileUrl
     };
+  }
+
+  @override
+  List<Object?> get props =>
+      [id, updatedAt, genre, role, membershipStatus, profileUrl, status];
+}
+
+enum UserRole {
+  SuperAdmin,
+  Admin,
+  User,
+  Narrator,
+}
+
+extension UserRoleExt on UserRole {
+  get role {
+    switch (this) {
+      case UserRole.SuperAdmin:
+        return 1;
+      case UserRole.Admin:
+        return 2;
+      case UserRole.Narrator:
+        return 8;
+      default:
+        return 4;
+    }
+  }
+}
+
+enum MemberShip {
+  Standard,
+  Prime,
+}
+
+extension MemberShipExt on MemberShip {
+  get role {
+    switch (this) {
+      case MemberShip.Standard:
+        return 1;
+      case MemberShip.Prime:
+        return 2;
+      default:
+        return 4;
+    }
   }
 }

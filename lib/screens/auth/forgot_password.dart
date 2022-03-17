@@ -1,5 +1,4 @@
 import 'package:fehm/config/navigation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fehm/widgets/text_input.dart';
@@ -8,6 +7,8 @@ import 'package:fehm/widgets/app_button.dart';
 class ForgotPassword extends StatelessWidget {
   final TextEditingController usernameControl = TextEditingController();
   final TextEditingController passwordControl = TextEditingController();
+
+  ForgotPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
